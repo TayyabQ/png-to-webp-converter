@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import sharp from 'sharp';
 import path from 'path';
 
-const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? "", "public/uploads");
+const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? '', 'public/uploads');
 
 export const POST = async (req: NextRequest) => {
   try {
@@ -10,7 +10,7 @@ export const POST = async (req: NextRequest) => {
     const { name } = body;
 
     if (!name) {
-      return NextResponse.json({ success: false, message: "Filename missing" });
+      return NextResponse.json({ success: false, message: 'Filename missing' });
     }
 
     const inputPath = path.resolve(UPLOAD_DIR, name);
