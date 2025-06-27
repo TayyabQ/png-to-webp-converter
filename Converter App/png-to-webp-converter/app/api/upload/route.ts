@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
-import path from "path";
-import fs from "fs";
+import { NextRequest, NextResponse } from 'next/server';
+import path from 'path';
+import fs from 'fs';
 
-const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? "", "public/uploads");
+const UPLOAD_DIR = path.resolve(process.env.ROOT_PATH ?? '', 'public/uploads');
 
 export const POST = async (req: NextRequest) => {
   const formData = await req.formData();
@@ -15,10 +15,7 @@ export const POST = async (req: NextRequest) => {
       fs.mkdirSync(UPLOAD_DIR);
     }
 
-    fs.writeFileSync(
-      path.resolve(UPLOAD_DIR, (body.file as File).name),
-      buffer
-    );
+    fs.writeFileSync(path.resolve(UPLOAD_DIR, (body.file as File).name), buffer);
   } else {
     return NextResponse.json({
       success: false,
